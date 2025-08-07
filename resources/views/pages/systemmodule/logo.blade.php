@@ -6,13 +6,14 @@
         left: 0;
         height: 100%;
         width: 100%;
-        background-color: rgba(0, 0, 0, 0.6);
+        background-color: rgba(0, 0, 0, 0.2);
         opacity: 0;
         transition: opacity 0.3s ease-in-out;
         z-index: 2;
         display: flex;
         justify-content: center;
         align-items: center;
+        border-radius: 10px;
     }
 
     .logo-container:hover .logo-overlay {
@@ -34,7 +35,7 @@
     <div class="card-header d-flex justify-content-between align-items-center">
         <span>System Logo Uploaded</span>
         <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#logoModal">
-            Upload Logo
+            <i class="bi bi-upload me-2"></i>Upload Logo
         </button>
     </div>
 

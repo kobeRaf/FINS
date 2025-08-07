@@ -20,9 +20,9 @@
                 aria-controls="master">
                     Master Data <b>▾</b>
                 </a>
-                <div class="collapse {{ $route === 'master' ? 'show' : '' }}" id="master" data-bs-parent="#mainSidebarAccordion">
+                <div class="collapse {{ $route === 'fund' ? 'show' : '' }}" id="master" data-bs-parent="#mainSidebarAccordion">
                     <ul class="list-unstyled ms-3 accordion">
-                        <li><a href="#" class="nav-link">Link 1</a></li>
+                        <li><a href="{{ url('/fund') }}" class="nav-link">Fund</a></li>
                         <li><a href="#" class="nav-link">Link 2</a></li>
                     </ul>
                 </div>
@@ -44,7 +44,7 @@
                             </a>
                             <div class="collapse {{ Request::is('budget/proposal*') ? 'show' : '' }}" id="budgetProposalIndex">
                                 <ul class="list-unstyled ms-3">
-                                    <li><a href="{{ route('budget.budgetproposal.index')}}" class="nav-link">Proposal List</a></li>
+                                    <li><a href="{{ route('budget.budgetproposal.index')}}" class="nav-link"><i class="bi bi-envelope me-1"></i> Proposal List</a></li>
                                     <li><a href="{{ route('budget.budgetproposal.create')}}" class="nav-link">Create Proposal</a></li>
                                 </ul>
                             </div>

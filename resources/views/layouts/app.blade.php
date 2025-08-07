@@ -10,9 +10,11 @@
     @if ($latest && $latest->logo)
         <link rel="icon" href="{{ asset('systemlogo/' . $latest->logo) }}" type="image/png">
     @endif
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
     <link rel="stylesheet" href="{{ asset('bootstrap/css/bootstrap.css') }}">
     <link rel="stylesheet" href="{{ asset('bootstrap/css/navbar.css') }}">
+    <link rel="stylesheet" href="{{ asset('bootstrap-icons/bootstrap-icons.css') }}">
+
     <link rel="dns-prefetch" href="//fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
 
