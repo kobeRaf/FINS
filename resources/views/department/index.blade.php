@@ -3,14 +3,14 @@
 @section('content')
     <div class="card mt-4">
         <div class="card-header d-flex justify-content-between align-items-center">
-            <span>Fund Management</span>
+            <span>Departments</span>
             <div class="d-flex gap-2">
                 <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#fundModal">
-                    <i class="bi bi-plus-lg me-1"></i> <strong>Add Fund</strong>
+                    <i class="bi bi-plus-lg me-1"></i> <strong>Add Department</strong>
                 </button>
-                <a href="{{ route('fund.report', $template->id) }}" class="btn btn-success btn-sm">
+                {{-- <a href="{{ route('department.report', $template->id) }}" class="btn btn-success btn-sm">
                     <i class="bi bi-printer me-1"></i> <strong>Fund Report</strong>
-                </a>
+                </a> --}}
             </div>
         </div>
         @if(session('success'))
@@ -22,21 +22,15 @@
                 <table class="table table-bordered table-hover mb-0">
                     <thead class="table text-center">
                         <tr>
-                            <th>ID</th>
-                            <th>Type</th>
-                            <th>Fund Type</th>
-                            <th>Fund Title</th>
-                            <th>Created At</th>
+                            <th>Department Name</th>
+                            <th>Department Head</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @forelse ($funds as $fund)
+                        @forelse ($department as $item)
                             <tr>
-                                <td>{{ $fund->id }}</td>
-                                <td>{{ $fund->type }}</td>
-                                <td>{{ $fund->fund_type }}</td>
-                                <td>{{ $fund->fund_title }}</td>
-                                <td>{{ $fund->created_at->format('Y-m-d') }}</td>
+                                <td>{{ $item->department_name}}</td>
+                                <td>{{ $item->department_head }}</td>
                             </tr>
                         @empty
                             <tr>
@@ -53,25 +47,21 @@
     {{-- Modal --}}
     <div class="modal fade" id="fundModal" tabindex="-1" aria-labelledby="fundModalLabel" aria-hidden="true">
         <div class="modal-dialog">
-            <form class="modal-content" method="POST" action="{{ route('fund.store') }}">
+            <form class="modal-content" method="POST" action="{{ route('department.store') }}">
                 @csrf
                 <div class="modal-header">
-                    <h5 class="modal-title" id="fundModalLabel">Add Fund</h5>
+                    <h5 class="modal-title" id="fundModalLabel">Add Deparment</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                 </div>
 
                 <div class="modal-body">
                     <div class="mb-3">
-                        <label class="form-label">Type</label>
-                        <input type="text" class="form-control" name="type" required>
+                        <label class="form-label">Department Name</label>
+                        <input type="text" class="form-control" name="department_name" required>
                     </div>
                     <div class="mb-3">
-                        <label class="form-label">Fund Type</label>
-                        <input type="text" class="form-control" name="fund_type" required>
-                    </div>
-                    <div class="mb-3">
-                        <label class="form-label">Fund Title</label>
-                        <input type="text" class="form-control" name="fund_title" required>
+                        <label class="form-label">Department Head</label>
+                        <input type="text" class="form-control" name="department_head" required>
                     </div>
                 </div>
 

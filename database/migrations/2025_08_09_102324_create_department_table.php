@@ -11,22 +11,22 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('fund', function (Blueprint $table) {
+        Schema::create('department', function (Blueprint $table) {
             $table->id();
             $table->string('reference_no');
-            $table->string('type');
-            $table->string('fund_type');
-            $table->string('fund_title');
+            $table->string('department_name');
+            $table->string('department_head');
             $table->timestamps();
         });
 
     }
+
 
     /**
      * Reverse the migrations.
      */
     public function down(): void
     {
-        Schema::dropIfExists('fund');
+        Schema::dropIfExists('department');
     }
 };

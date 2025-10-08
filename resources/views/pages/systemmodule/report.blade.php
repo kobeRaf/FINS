@@ -1,7 +1,8 @@
 @extends('layouts.app')
-@php
-   $sample = "GAGO KA EH"
-@endphp
+
+    @php
+    $sample = "GAGO KA EH"
+    @endphp
 @section('content')
     <div class="card">
         <div class="card-header d-flex justify-content-between align-items-center">
@@ -114,9 +115,9 @@
         </div>
     </div>
 
-@if($template->count())
+    @if($template->count())
 
-{{--Preview--}}
+    {{--Preview--}}
     <div class="row mt-4">
         @foreach($template as $template)
             
@@ -152,7 +153,7 @@
                                         <img src="{{ asset('reportlogo/' . $logoPath) }}"
                                             class="img-fluid mx-2 rounded shadow-sm align-self-center"
                                             style="height: 60px; width: 60px;">
-                                     @endif
+                                    @endif
                                 @endforeach
                             </div>
                         </div>
@@ -299,28 +300,28 @@
             </div>
         @endforeach
     </div>
-@else
-    <div class="card mt-4">
-        <div class="card-header d-flex justify-content-between align-items-center">
-            <span>No templates available</span>
+    @else
+        <div class="card mt-4">
+            <div class="card-header d-flex justify-content-between align-items-center">
+                <span>No templates available</span>
+            </div>
         </div>
-    </div>
-@endif
+    @endif
 
 
 
 
-<script>
-    function previewLogo(select, previewId) {
-        const selected = select.options[select.selectedIndex];
-        const imgPath = selected.getAttribute('data-img');
-        const preview = document.getElementById(previewId);
-        if (imgPath) {
-            preview.src = imgPath;
-            preview.style.display = 'block';
-        } else {
-            preview.style.display = 'none';
+    <script>
+        function previewLogo(select, previewId) {
+            const selected = select.options[select.selectedIndex];
+            const imgPath = selected.getAttribute('data-img');
+            const preview = document.getElementById(previewId);
+            if (imgPath) {
+                preview.src = imgPath;
+                preview.style.display = 'block';
+            } else {
+                preview.style.display = 'none';
+            }
         }
-    }
-</script>
+    </script>
 @endsection
