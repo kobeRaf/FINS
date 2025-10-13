@@ -6,26 +6,20 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     */
     public function up(): void
     {
-        Schema::create('fund', function (Blueprint $table) {
+        Schema::create('entity', function (Blueprint $table) {
             $table->id();
             $table->string('reference_no')->unique();
-            $table->string('code');
-            $table->string('fund_name');
-            $table->string('fund_description');
+            $table->string('entity_name');
+            $table->string('entity_type')->nullable(); // e.g., 'Employee', 'Supplier', etc.
+            $table->string('entity_address')->nullable();
             $table->timestamps();
         });
     }
 
-    /**
-     * Reverse the migrations.
-     */
     public function down(): void
     {
-        Schema::dropIfExists('fund');
+        Schema::dropIfExists('entity');
     }
 };

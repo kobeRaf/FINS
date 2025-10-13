@@ -7,21 +7,26 @@ use App\Http\Controllers\LogoController;
 use App\Http\Controllers\ReportController;
 use App\Http\Controllers\BudgetController;
 use App\Http\Controllers\AccountingController;
+use App\Http\Controllers\EntityController;
+use App\Http\Controllers\ItemPayeeController;
 
-use App\Http\Controllers\TreasuryController;
+use App\Http\Controllers\Treasurer\TreasuryController;
 use App\Http\Controllers\Treasurer\AfController;
 use App\Http\Controllers\Treasurer\LiveCollectionController;
 use App\Http\Controllers\Treasurer\BatchCollectionController;
 
-use App\Http\Controllers\Disbursement\ForSignatureController;
-use App\Http\Controllers\Disbursement\CashAdvanceController;
-use App\Http\Controllers\Disbursement\CaSignatureController;
-use App\Http\Controllers\Disbursement\AccountingAuditController;
-use App\Http\Controllers\Disbursement\AdaSignatureController;
-use App\Http\Controllers\Disbursement\ForOutController;
-use App\Http\Controllers\Disbursement\DownloadController;
-use App\Http\Controllers\Disbursement\ForReleaseController;
-use App\Http\Controllers\Disbursement\LiquidationController;
+
+use App\Http\Controllers\AccountController;
+
+use App\Http\Controllers\Treasurer\Disbursement\ForSignatureController;
+use App\Http\Controllers\Treasurer\Disbursement\CashAdvanceController;
+use App\Http\Controllers\Treasurer\Disbursement\CaSignatureController;
+use App\Http\Controllers\Treasurer\Disbursement\AccountingAuditController;
+use App\Http\Controllers\Treasurer\Disbursement\AdaSignatureController;
+use App\Http\Controllers\Treasurer\Disbursement\ForOutController;
+use App\Http\Controllers\Treasurer\Disbursement\DownloadController;
+use App\Http\Controllers\Treasurer\Disbursement\ForReleaseController;
+use App\Http\Controllers\Treasurer\Disbursement\LiquidationController;
 
 
 use App\Http\Controllers\FundController;
@@ -57,8 +62,8 @@ Route::middleware(['auth'])->group(function () {
     // accounting routes
 
     // treasury routes
-      Route::get('/treasury', [TreasuryController::class, 'view'])->name('treasury.home');    
-    
+        Route::get('/treasury', [TreasuryController::class, 'view'])->name('treasury.home');    
+      
           //AFcontroller
           Route::get('treasury/revenue/add-af-controll', [AfController::class, 'index'])->name('treasury.afcontroll.index'); 
           Route::get('treasury/revenue/live-collection', [LiveCollectionController::class, 'index'])->name('treasury.livecollection.index'); 
@@ -79,19 +84,26 @@ Route::middleware(['auth'])->group(function () {
     
     //master data
       //fund
-      Route::get('/fund', [FundController::class, 'view'])->name('fund.view');
-      Route::post('/fund', [FundController::class, 'store'])->name('fund.store');  
-      Route::get('/fund/report/{templateId}', [FundController::class, 'report'])->name('fund.report');
+        Route::get('/fund', [FundController::class, 'view'])->name('fund.view');
+        Route::post('/fund', [FundController::class, 'store'])->name('fund.store');  
+        Route::get('/fund/report/{templateId}', [FundController::class, 'report'])->name('fund.report');
+
       //deparment
-      Route::get('/department', [DepartmentController::class, 'view'])->name('department.view');
-      Route::post('/department', [DepartmentController::class, 'store'])->name('department.store');  
+        Route::get('/department', [DepartmentController::class, 'view'])->name('department.view');
+        Route::post('/department', [DepartmentController::class, 'store'])->name('department.store');  
       // Route::get('/department/report/{templateId}', [DepartmentController::class, 'report'])->name('department.report');
+
+      //payee
+        Route::get('/entity', [EntityController::class, 'view'])->name('entity.view');
+        Route::post('/entity/store', [EntityController::class, 'store'])->name('entity.store');
+
+      //accounts
+        Route::get('/account', [AccountController::class, 'view'])->name('account.view');
+        Route::post('/account/store', [AccountController::class, 'store'])->name('account.store');
+
     //master data
 
-    //payee
-      Route::get('/payee', [PayeeController::class, 'view'])->name('payee.view');
-    //payee
-  
+
     // Settings routes
 
         //system

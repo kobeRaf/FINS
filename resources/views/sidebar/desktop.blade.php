@@ -39,7 +39,7 @@
             <li class="nav-item"><a href="{{ url('/home') }}" class="nav-link"><i class="bi bi-house-door me-3"></i> Home</a></li>
 
             {{--Master Data--}}
-                {{-- <li class="nav-item">
+                <li class="nav-item">
                     <a class="nav-link" data-bs-toggle="collapse" href="#master"
                     role="button" aria-expanded="{{ $route === 'master' ? 'true' : 'false' }}"
                     aria-controls="master">
@@ -49,19 +49,19 @@
                         <ul class="list-unstyled ms-3 accordion">
                             <li><a href="{{ url('/fund') }}" class="nav-link"><i class="bi bi-wallet2 me-2"></i>Funds</a></li>
                             <li><a href="{{ url('/department') }}" class="nav-link"><i class="bi bi-building me-2"></i>Departments</a></li>
-                            <li><a href="{{ url('/payee') }}" class="nav-link"><i class="bi bi-person-lines-fill me-2"></i>Payees</a></li>
-                            <li><a href="{{ url('/accounts') }}" class="nav-link"><i class="bi bi-journal-text me-2"></i>Chart of Accounts</a></li>
+                            <li><a href="{{ url('/entity') }}" class="nav-link"><i class="bi bi-person-lines-fill me-2"></i>Entity</a></li>
+                            <li><a href="{{ url('/account') }}" class="nav-link"><i class="bi bi-journal-text me-2"></i>Chart of Accounts</a></li>
                             <li><a href="{{ url('/projects') }}" class="nav-link"><i class="bi bi-kanban me-2"></i>Projects / Activities</a></li>
                             <li><a href="{{ url('/documents') }}" class="nav-link"><i class="bi bi-file-earmark-text me-2"></i>Documents</a></li>
                             <li><a href="{{ url('/transactions') }}" class="nav-link"><i class="bi bi-repeat me-2"></i>Transactions</a></li>
                             <li><a href="{{ url('/users') }}" class="nav-link"><i class="bi bi-people me-2"></i>Users</a></li>
                         </ul>
                     </div>
-                </li> --}}
+                </li>
             {{--Master Data--}}
 
             {{-- Budget --}}
-                {{-- <li class="nav-item">
+                <li class="nav-item">
                     <a class="nav-link" data-bs-toggle="collapse" href="#budgetMenu"
                     role="button" aria-expanded="{{ $route === 'budget' ? 'true' : 'false' }}"
                     aria-controls="budgetMenu">
@@ -97,7 +97,7 @@
                             <li><a href="#" class="nav-link">Link 2</a></li>
                         </ul>
                     </div>
-                </li> --}}
+                </li>
             {{-- Budget --}}
 
             {{-- Accounting --}}
@@ -225,7 +225,7 @@
 
 
             {{-- System Settings --}}
-                {{-- <li class="nav-item">
+                <li class="nav-item">
                     <a class="nav-link" data-bs-toggle="collapse" href="#system"
                     role="button" aria-expanded="{{ $route === 'system' ? 'true' : 'false' }}"
                     aria-controls="system">
@@ -238,7 +238,7 @@
                             <li class="nav-item"><a href="{{ url('report') }}" class="nav-link">Report Template</a></li>
                         </ul>
                     </div>
-                </li> --}}
+                </li>
             {{-- System Settings --}}
 
             {{--User Manual--}}

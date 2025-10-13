@@ -20,7 +20,8 @@ class DepartmentController extends Controller
     $reference = 'DEPT-' . strtoupper(uniqid());
 
     Department::create([
-        'reference_no'   => $reference,
+        'department_no'   => $reference,
+        'department_acronym' => $request->department_acronym,
         'department_name'  => $request->department_name,
         'department_head'  => $request->department_head
         

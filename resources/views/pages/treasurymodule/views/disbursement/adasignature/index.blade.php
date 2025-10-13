@@ -3,7 +3,7 @@
     <title>{{ $latest->system_name ?? 'APP' }} | Treasury</title>
 
 @section('content')
-    <div class="row mb-4"><h3><strong>ADA Signature</strong></h3></div>
+    <div class="row mb-4"><h3><strong>ADA Signature Page</strong></h3></div>
         <div class="card mb-4">
             <div class="card-header">Card 1</div>
             <div class="card-body">

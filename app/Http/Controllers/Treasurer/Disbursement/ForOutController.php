@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Disbursement;
+namespace App\Http\Controllers\Treasurer\Disbursement;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;

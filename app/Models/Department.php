@@ -8,6 +8,6 @@ class Department extends Model
 {
     protected $table = "department";
 
-    protected $fillable = ['reference_no', 'department_name' , 'department_head'];
+    protected $fillable = ['department_no', 'department_acronym', 'department_name' , 'department_head'];
 
 }

@@ -11,23 +11,21 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('department', function (Blueprint $table) {
+        Schema::create('item_payees', function (Blueprint $table) {
             $table->id();
-            $table->string('reference_no');
-            $table->string('department_acronym');
-            $table->string('department_name');
-            $table->string('department_head');
+            $table->foreignId('entity_id')->constrained('entity')->onDelete('cascade');
+            $table->decimal('amount', 15, 2)->nullable();
+            $table->string('status')->default('For Signature');
+            $table->date('date')->nullable();
             $table->timestamps();
         });
-
     }
-
 
     /**
      * Reverse the migrations.
      */
     public function down(): void
     {
-        Schema::dropIfExists('department');
+        Schema::dropIfExists('item_payees');
     }
 };

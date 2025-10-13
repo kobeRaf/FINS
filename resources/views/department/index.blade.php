@@ -29,7 +29,7 @@
                     <tbody>
                         @forelse ($department as $item)
                             <tr>
-                                <td>{{ $item->department_name}}</td>
+                                <td>{{ $item->department_acronym}} - {{ $item->department_name}}</td>
                                 <td>{{ $item->department_head }}</td>
                             </tr>
                         @empty
@@ -55,6 +55,10 @@
                 </div>
 
                 <div class="modal-body">
+                    <div class="mb-3">
+                        <label class="form-label">Department Acronym</label>
+                        <input type="text" class="form-control" name="department_acronym" required>
+                    </div>
                     <div class="mb-3">
                         <label class="form-label">Department Name</label>
                         <input type="text" class="form-control" name="department_name" required>
