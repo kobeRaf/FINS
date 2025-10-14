@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container d-flex align-items-center justify-content-center" >
+<div class="container d-flex align-items-center justify-content-center">
     <div class="card shadow-lg p-4" style="width: 100%; max-width: 500px; border-radius: 1rem;">
         <div class="text-center mb-4">
             @if(isset($latest) && $latest->logo)
@@ -11,16 +11,15 @@
             <h4 class="text-muted">{{ $latest->sub_system_name ?? 'Sub System' }}</h4>
         </div>
 
-
         <form method="POST" action="{{ route('login') }}">
             @csrf
 
             <div class="mb-3">
-                <label for="email" class="form-label">{{ __('Username') }}</label>
-                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror"
-                    name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
+                <label for="username" class="form-label">{{ __('Username') }}</label>
+                <input id="username" type="text" class="form-control @error('username') is-invalid @enderror"
+                    name="username" value="{{ old('username') }}" required autofocus>
 
-                @error('email')
+                @error('username')
                     <div class="invalid-feedback d-block">
                         {{ $message }}
                     </div>
@@ -53,14 +52,6 @@
                     {{ __('Login') }}
                 </button>
             </div>
-
-            {{-- @if (Route::has('password.request'))
-                <div class="text-center">
-                    <a class="text-decoration-none" href="{{ route('password.request') }}">
-                        {{ __('Forgot Your Password?') }}
-                    </a>
-                </div>
-            @endif --}}
         </form>
     </div>
 </div>

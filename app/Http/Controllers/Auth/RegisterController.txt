@@ -1,0 +1,75 @@
+<?php
+
+namespace App\Http\Controllers\Auth;
+
+use App\Http\Controllers\Controller;
+use App\Models\User;
+use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Validator;
+
+class RegisterController extends Controller
+{
+    use RegistersUsers;
+
+    /**
+     * Where to redirect after registration.
+     */
+    protected $redirectTo = '/users'; // e.g. redirect admin back to user list
+
+    /**
+     * Only admin can create users.
+     */
+    public function __construct()
+    {
+        $this->middleware(['auth']); // admin must be logged in
+    }
+
+    /**
+     * Show the registration form.
+     */
+    public function showRegistrationForm()
+    {
+        return view('auth.register');
+    }
+
+    /**
+     * Validate registration data.
+     */
+    protected function validator(array $data)
+    {
+        return Validator::make($data, [
+            'username' => ['required', 'string', 'max:255', 'unique:users'],
+            'first' => ['required', 'string', 'max:255'],
+            'middle' => ['nullable', 'string', 'max:255'],
+            'last' => ['required', 'string', 'max:255'],
+            'type' => ['nullable', 'string', 'max:255'],
+            'password' => ['required', 'string', 'min:8', 'confirmed'],
+        ]);
+    }
+
+    /**
+     * Create new user.
+     */
+    protected function create(array $data)
+    {
+        return User::create([
+            'reference_no' => 'USER-' . strtoupper(uniqid()),
+            'username' => $data['username'],
+            'first' => $data['first'],
+            'middle' => $data['middle'] ?? null,
+            'last' => $data['last'],
+            'type' => $data['type'] ?? 'staff',
+            'password' => Hash::make($data['password']),
+        ]);
+    }
+
+    /**
+     * Override default redirect to stay on same page with a message.
+     */
+    protected function registered(Request $request, $user)
+    {
+        return redirect()->back()->with('success', 'User account created successfully!');
+    }
+}

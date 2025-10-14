@@ -1,52 +1,26 @@
 <?php
 
-use Illuminate\Database\Migrations\Migration;
-use Illuminate\Database\Schema\Blueprint;
-use Illuminate\Support\Facades\Schema;
+namespace Database\Seeders;
 
-return new class extends Migration
+use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Hash;
+use App\Models\User;
+
+class DatabaseSeeder extends Seeder
 {
     /**
-     * Run the migrations.
+     * Seed the application's database.
      */
-    public function up(): void
+    public function run(): void
     {
-        Schema::create('users', function (Blueprint $table) {
-            $table->id();
-            $table->string('first');
-            $table->string('middle');
-            $table->string('last');
-            $table->string('type')->nullable();
-            $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
-            $table->rememberToken();
-            $table->timestamps();
-        });
-
-        Schema::create('password_reset_tokens', function (Blueprint $table) {
-            $table->string('email')->primary();
-            $table->string('token');
-            $table->timestamp('created_at')->nullable();
-        });
-
-        Schema::create('sessions', function (Blueprint $table) {
-            $table->string('id')->primary();
-            $table->foreignId('user_id')->nullable()->index();
-            $table->string('ip_address', 45)->nullable();
-            $table->text('user_agent')->nullable();
-            $table->longText('payload');
-            $table->integer('last_activity')->index();
-        });
+        User::create([
+            'reference_no' => 'USER-0001',
+            'username' => 'admin',
+            'first' => 'System',
+            'middle' => null,
+            'last' => 'Administrator',
+            'type' => 'Admin',
+            'password' => Hash::make('admin123'), // default password
+        ]);
     }
-
-    /**
-     * Reverse the migrations.
-     */
-    public function down(): void
-    {
-        Schema::dropIfExists('users');
-        Schema::dropIfExists('password_reset_tokens');
-        Schema::dropIfExists('sessions');
-    }
-};
+}

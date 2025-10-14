@@ -1,6 +1,9 @@
 <?php
 
+
 use Illuminate\Support\Facades\Route;
+
+
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\SystemController;
 use App\Http\Controllers\LogoController;
@@ -9,6 +12,7 @@ use App\Http\Controllers\BudgetController;
 use App\Http\Controllers\AccountingController;
 use App\Http\Controllers\EntityController;
 use App\Http\Controllers\ItemPayeeController;
+use App\Http\Controllers\Auth\RegisterController;
 
 use App\Http\Controllers\Treasurer\TreasuryController;
 use App\Http\Controllers\Treasurer\AfController;
@@ -37,7 +41,7 @@ Route::get('/', function () {
 });
 
 
-Auth::routes();
+Auth::routes(['register' => false]);
 
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
@@ -100,6 +104,8 @@ Route::middleware(['auth'])->group(function () {
       //accounts
         Route::get('/account', [AccountController::class, 'view'])->name('account.view');
         Route::post('/account/store', [AccountController::class, 'store'])->name('account.store');
+
+      //users
 
     //master data
 

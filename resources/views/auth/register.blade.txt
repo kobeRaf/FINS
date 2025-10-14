@@ -6,12 +6,20 @@
         <div class="col-md-10">
             <div class="card shadow-sm border-0">
                 <div class="card-header text-center fs-4 fw-bold bg-light">
-                    {{ __('Create a New Account') }}
+                    {{ __('Create New User Account') }}
                 </div>
 
                 <div class="card-body">
                     <form method="POST" action="{{ route('register') }}">
                         @csrf
+
+                        <div class="mb-3">
+                            <input type="text" name="username" class="form-control @error('username') is-invalid @enderror"
+                                placeholder="Username" value="{{ old('username') }}" required>
+                            @error('username')
+                                <span class="invalid-feedback"><strong>{{ $message }}</strong></span>
+                            @enderror
+                        </div>
 
                         <div class="row mb-3">
                             <div class="col-md-4">
@@ -37,8 +45,14 @@
                         </div>
 
                         <div class="mb-3">
-                            <input type="email" name="email" class="form-control @error('email') is-invalid @enderror" placeholder="Email Address" value="{{ old('email') }}" required>
-                            @error('email')
+                            <select name="type" class="form-select @error('type') is-invalid @enderror">
+                                <option value="">Select Role</option>
+                                <option value="admin">Admin</option>
+                                <option value="budget">Budget</option>
+                                <option value="accounting">Accounting</option>
+                                <option value="treasury">Treasury</option>
+                            </select>
+                            @error('type')
                                 <span class="invalid-feedback"><strong>{{ $message }}</strong></span>
                             @enderror
                         </div>
@@ -56,7 +70,7 @@
 
                         <div class="d-grid">
                             <button type="submit" class="btn btn-primary btn-lg">
-                                {{ __('Register') }}
+                                {{ __('Create User') }}
                             </button>
                         </div>
                     </form>
